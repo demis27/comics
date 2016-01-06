@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/comics-business/comics-business.iml" filepath="$PROJECT_DIR$/comics-business/comics-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comics-data/comics-data.iml" filepath="$PROJECT_DIR$/comics-data/comics-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comics-parent.iml" filepath="$PROJECT_DIR$/comics-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comics-search/comics-search.iml" filepath="$PROJECT_DIR$/comics-search/comics-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/comics-web/comics-web.iml" filepath="$PROJECT_DIR$/comics-web/comics-web.iml" />
+    </modules>
+  </component>
+</project>
