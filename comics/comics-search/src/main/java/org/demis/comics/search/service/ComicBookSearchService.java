@@ -50,6 +50,11 @@ public class ComicBookSearchService {
                 .execute()
                 .actionGet();
     }
+
+    public ComicBookDTO update(ComicBookEntity entity) {
+        return create(entity);
+    }
+
     protected String getMapping() {
         return COMIC_BOOK_MAPPING;
     }

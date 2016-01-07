@@ -68,15 +68,16 @@ public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> 
         createInstance();
         LOGGER.info("Create Index and Mappings...");
 
-        client.admin();
-        client.admin().indices();
-        client.admin().indices().prepareExists(environment.getProperty("elasticsearch.index.name"));
-        client.admin().indices().prepareExists(environment.getProperty("elasticsearch.index.name")).execute();
-
         IndicesExistsResponse res = client.admin().indices().prepareExists(environment.getProperty("elasticsearch.index.name")).execute().actionGet();
         if (!res.isExists()) {
-            CreateIndexRequestBuilder createIndexRequestBuilder = client.admin().indices().prepareCreate(environment.getProperty("elasticsearch.index.name"));
+            LOGGER.info("Index comics don't exist, we will create it");
+
+            Settings.Builder settings = Settings.builder().put("number_of_replicas", environment.getProperty("elasticsearch.index.replicas.number"));
+
+            CreateIndexRequestBuilder createIndexRequestBuilder = client.admin().indices().prepareCreate(environment.getProperty("elasticsearch.index.name")).setSettings(settings);
             createIndexRequestBuilder.execute().actionGet();
+
+            LOGGER.info("Index comics don't exist, created");
         }
         // TODO verify and add mapping
 

@@ -4,6 +4,7 @@ import org.demis.comics.data.Range;
 import org.demis.comics.data.Sort;
 import org.demis.comics.data.jpa.entity.ComicBookEntity;
 import org.demis.comics.data.jpa.service.ComicBookJPAService;
+import org.demis.comics.search.service.ComicBookSearchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -19,13 +20,20 @@ public class ComicBookBusinessService {
     @Qualifier("comicBookJPAService")
     private ComicBookJPAService comicBookJPAService;
 
+    @Autowired
+    @Qualifier("comicBookSearchService")
+    private ComicBookSearchService comicBookSearchService;
+
     @Transactional
     public ComicBookEntity create(ComicBookEntity created) {
-        return comicBookJPAService.create(created);
+        ComicBookEntity entity = comicBookJPAService.create(created);
+        comicBookSearchService.create(entity);
+        return entity;
     }
 
     @Transactional
     public ComicBookEntity delete(Long id) throws EntityNotFoundException {
+        comicBookSearchService.delete(id);
         return comicBookJPAService.delete(id);
     }
 
@@ -41,7 +49,9 @@ public class ComicBookBusinessService {
 
     @Transactional
     public ComicBookEntity update(ComicBookEntity updated) throws EntityNotFoundException {
-        return comicBookJPAService.update(updated);
+        ComicBookEntity entity = comicBookJPAService.update(updated);
+        comicBookSearchService.update(entity);
+        return entity;
     }
 
     public List<ComicBookEntity> findPart(Range range, List<Sort> sorts) {

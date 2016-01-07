@@ -13,6 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @EnableWebMvc
 @ComponentScan(basePackages = {
         "org.demis.comics.web",
+        "org.demis.comics.search",
         "org.demis.comics.business.service",
         "org.demis.comics.data"})
 @PropertySource(value = {"classpath:comics.properties"})
