@@ -1,7 +1,6 @@
 package org.demis.comics.web;
 
 import org.demis.comics.data.jpa.PersistenceJPAConfiguration;
-import org.demis.comics.web.exception.HandlerException415Resolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.WebApplicationInitializer;
@@ -30,6 +29,5 @@ public class WebAppInitializer implements WebApplicationInitializer {
         dynamic.addMapping("/api/*");
         dynamic.setLoadOnStartup(1);
 
-        LOGGER.debug (((URLClassLoader) (Thread.currentThread().getContextClassLoader())).getURLs().toString());
     }
 }

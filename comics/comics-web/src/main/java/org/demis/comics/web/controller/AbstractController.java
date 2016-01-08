@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.List;
@@ -54,7 +53,7 @@ public class AbstractController {
     }
 
     @ExceptionHandler(RangeException.class)
-    public Object handleRangeException(HttpServletRequest request, HttpServletResponse httpResponse, RangeException ex) {
+    public Object handleRangeException(HttpServletResponse httpResponse, RangeException ex) {
         LOGGER.warn(ex.getReason());
         httpResponse.setStatus(HttpStatus.BAD_REQUEST.value());
         return ex;

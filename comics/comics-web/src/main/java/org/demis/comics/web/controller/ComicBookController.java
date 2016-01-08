@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
@@ -181,11 +180,5 @@ public class ComicBookController extends AbstractController {
     @ResponseStatus(HttpStatus.OK)
     public void optionsComicBook(HttpServletResponse httpResponse){
         httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,PUT,DELETE,OPTIONS");
-    }
-
-    @ExceptionHandler(Exception.class)
-    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
-    public String unsupportedMediaType() {
-        return "unsupportedMediaType";
     }
 }

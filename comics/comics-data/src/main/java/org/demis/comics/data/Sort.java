@@ -4,7 +4,7 @@ public class Sort {
 
     private final String property;
 
-    private boolean ascending;
+    private final boolean ascending;
 
     public Sort(String property, boolean ascending) {
         this.property = property;

@@ -1,6 +1,6 @@
 package org.demis.comics.web;
 
-import org.demis.comics.web.exception.HandlerException415Resolver;
+import org.demis.comics.web.exception.HandlerException400Resolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -45,7 +45,7 @@ public class RestConfiguration extends WebMvcConfigurationSupport {
     public RestConfiguration() {
         super();
         List<HandlerExceptionResolver> resolvers = new ArrayList<>();
-        resolvers.add(new HandlerException415Resolver());
+        resolvers.add(new HandlerException400Resolver());
         configureHandlerExceptionResolvers(resolvers);
     }
 }

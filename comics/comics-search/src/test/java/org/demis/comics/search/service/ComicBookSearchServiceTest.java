@@ -24,14 +24,14 @@ public class ComicBookSearchServiceTest extends AbstractTestNGSpringContextTests
     @Test
     public void create() {
         ComicBookEntity entity = new ComicBookEntity();
-        entity.setId(1l);
+        entity.setId(1L);
         entity.setTitle("Batman");
         service.create(entity);
     }
 
     @AfterMethod
     public void deleteAll() {
-        service.delete(1l);
+        service.delete(1L);
     }
 
 }

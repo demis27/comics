@@ -14,9 +14,9 @@ public abstract class GenericConverter<EntityImpl extends EntityInterface, DTOIm
 
     private static final Logger logger = LoggerFactory.getLogger(GenericConverter.class);
 
-    protected Class<EntityImpl> entityClass;
+    protected final Class<EntityImpl> entityClass;
 
-    protected Class<DTOImpl> dtoClass;
+    protected final Class<DTOImpl> dtoClass;
 
     public GenericConverter(Class<EntityImpl> entityClass, Class<DTOImpl> dtoClass) {
         this.entityClass = entityClass;
@@ -32,9 +32,7 @@ public abstract class GenericConverter<EntityImpl extends EntityInterface, DTOIm
             dto = dtoClass.newInstance();
             copyAttributes(entity, dto);
             dto.setId(entity.getId());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
         return dto;
@@ -57,9 +55,7 @@ public abstract class GenericConverter<EntityImpl extends EntityInterface, DTOIm
             entity = entityClass.newInstance();
             copyAttributes(entity, dto);
             entity.setId(dto.getId());
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
+        } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
 

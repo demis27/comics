@@ -3,7 +3,6 @@ package org.demis.comics.search.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.demis.comics.data.converter.ComicBookConverter;
-import org.demis.comics.data.converter.GenericConverter;
 import org.demis.comics.data.dto.ComicBookDTO;
 import org.demis.comics.data.jpa.entity.ComicBookEntity;
 import org.demis.comics.search.SearchConfig;
