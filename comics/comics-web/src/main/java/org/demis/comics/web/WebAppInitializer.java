@@ -1,6 +1,7 @@
 package org.demis.comics.web;
 
 import org.demis.comics.data.jpa.PersistenceJPAConfiguration;
+import org.demis.comics.web.exception.HandlerException415Resolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.WebApplicationInitializer;
@@ -24,7 +25,6 @@ public class WebAppInitializer implements WebApplicationInitializer {
         ctx.setServletContext(servletContext);
         DispatcherServlet dispatcherServlet = new DispatcherServlet(ctx);
         dispatcherServlet.setDispatchOptionsRequest(true);
-
 
         ServletRegistration.Dynamic dynamic = servletContext.addServlet("dispatcher", dispatcherServlet);
         dynamic.addMapping("/api/*");

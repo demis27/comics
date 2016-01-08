@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
@@ -37,7 +38,10 @@ public class ComicBookController extends AbstractController {
     // GET
     // ------------------------------------------------------------------------
 
-    @RequestMapping(method = RequestMethod.GET, value = {"comicBook", "comicBook/"})
+    @RequestMapping(method = RequestMethod.GET,
+            value = {"comicBook", "comicBook/"},
+            produces = {"application/json; charset=UTF-8"}
+    )
     @ResponseBody
     public List<ComicBookWebDTO> getComicBooks(@RequestParam(value="sort", required = false) String sortParameters,
                                                HttpServletRequest request,
@@ -60,7 +64,10 @@ public class ComicBookController extends AbstractController {
     }
 
     @ResponseBody
-    @RequestMapping(value = {"comicBook/{id}","comicBook/{id}/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"comicBook/{id}","comicBook/{id}/"},
+            method = RequestMethod.GET,
+            produces = {"application/json; charset=UTF-8"}
+    )
     public Object getComicBook(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
         ComicBookEntity IncomingEmail = service.findById(id);
         if (IncomingEmail != null) {
@@ -78,13 +85,10 @@ public class ComicBookController extends AbstractController {
     // POST
     // ------------------------------------------------------------------------
 
-    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.POST)
-    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    public void postComicBooks() {
-    }
-
-
-    @RequestMapping(value = {"comicBook", "comicBook/"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"comicBook", "comicBook/"},
+            consumes = {"application/json"},
+            produces = {"application/json; charset=UTF-8"},
+            method = RequestMethod.POST)
     @ResponseBody
     public Object postComicBook(@RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) {
         ComicBookEntity entity = service.create(converter.convertWebDTO(dto));
@@ -98,6 +102,11 @@ public class ComicBookController extends AbstractController {
         }
     }
 
+    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    public void postComicBooks() {
+    }
+
     // ------------------------------------------------------------------------
     // PUT
     // ------------------------------------------------------------------------
@@ -107,7 +116,10 @@ public class ComicBookController extends AbstractController {
     public void putComicBooks() {
     }
 
-    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.PUT)
+    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"},
+            consumes = {"application/json"},
+            produces = {"application/json; charset=UTF-8"},
+            method = RequestMethod.PUT)
     @ResponseBody
     public Object putComicBook(@PathVariable("id") Long id, @RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) {
         ComicBookEntity entity = service.findById(id);
@@ -162,14 +174,18 @@ public class ComicBookController extends AbstractController {
     @RequestMapping(value = {"comicBook", "comicBook/"}, method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     public void optionsComicBooks(HttpServletResponse httpResponse){
-        httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,OPTIONS");
+        httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,OPTIONS,POST");
     }
 
     @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     public void optionsComicBook(HttpServletResponse httpResponse){
-        httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,PUT,POST,DELETE,OPTIONS");
+        httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,PUT,DELETE,OPTIONS");
     }
 
-
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.UNSUPPORTED_MEDIA_TYPE)
+    public String unsupportedMediaType() {
+        return "unsupportedMediaType";
+    }
 }
