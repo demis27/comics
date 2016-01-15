@@ -50,7 +50,8 @@ public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> 
                     environment.getProperty("elasticsearch.cluster.name"));
 
             client = TransportClient.builder().settings(settings).build()
-                    .addTransportAddress(new InetSocketTransportAddress(Inet4Address.getByName(environment.getProperty("elasticsearch.address.ip")), environment.getProperty("elasticsearch.address.port", Integer.class)));
+                    .addTransportAddress(new InetSocketTransportAddress(Inet4Address.getByName(environment.getProperty("elasticsearch.address.ip")),
+                            environment.getProperty("elasticsearch.address.port", Integer.class)));
         }
 
         return client;
