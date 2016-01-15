@@ -10,7 +10,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
-import java.net.URLClassLoader;
 
 public class WebAppInitializer implements WebApplicationInitializer {
 
@@ -26,7 +25,7 @@ public class WebAppInitializer implements WebApplicationInitializer {
         dispatcherServlet.setDispatchOptionsRequest(true);
 
         ServletRegistration.Dynamic dynamic = servletContext.addServlet("dispatcher", dispatcherServlet);
-        dynamic.addMapping("/api/*");
+        dynamic.addMapping("/api/rest/*");
         dynamic.setLoadOnStartup(1);
 
     }

@@ -23,7 +23,7 @@ import java.net.Inet4Address;
 
 @Component
 @PropertySource(value = {"classpath:comics.properties"})
-@ComponentScan(basePackages = {"org.demis.comics.search.service","org.demis.comics.data"})
+@ComponentScan(basePackages = {"org.demis.comics.search.service", "org.demis.comics.data"})
 public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchClientFactoryBean.class);
@@ -37,6 +37,7 @@ public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> 
     public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
+
     @Override
     public Class<?> getObjectType() {
         return Client.class;
@@ -45,7 +46,8 @@ public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> 
     @Override
     protected Client createInstance() throws Exception {
         if (client == null) {
-            Settings.Builder settings = Settings.builder().put("cluster.name", environment.getProperty("elasticsearch.cluster.name"));
+            Settings.Builder settings = Settings.builder().put("cluster.name",
+                    environment.getProperty("elasticsearch.cluster.name"));
 
             client = TransportClient.builder().settings(settings).build()
                     .addTransportAddress(new InetSocketTransportAddress(Inet4Address.getByName(environment.getProperty("elasticsearch.address.ip")), environment.getProperty("elasticsearch.address.port", Integer.class)));
@@ -68,7 +70,8 @@ public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> 
         createInstance();
         LOGGER.info("Create Index and Mappings...");
 
-        IndicesExistsResponse res = client.admin().indices().prepareExists(environment.getProperty("elasticsearch.index.name")).execute().actionGet();
+        IndicesExistsResponse res = client.admin().indices().prepareExists(environment.getProperty("elasticsearch.index.name"))
+                .execute().actionGet();
         if (!res.isExists()) {
             LOGGER.info("Index comics don't exist, we will create it");
 
@@ -80,7 +83,6 @@ public class ElasticSearchClientFactoryBean extends AbstractFactoryBean<Client> 
             LOGGER.info("Index comics don't exist, created");
         }
         // TODO verify and add mapping
-
 
 
         LOGGER.info("Index and Mappings created");

@@ -1,0 +1,11 @@
+    Documentation of the project
+
+ToDo
+
+    * Complete Maven Site and report
+    * Add a JQuery Ajax Test
+    * Add a backbone.js test
+    * Add a React test
+    * Add a new entity with a 1-n relation with comicBook
+    * Add a HAL or Siren content type result
+    * Spring HateOAS

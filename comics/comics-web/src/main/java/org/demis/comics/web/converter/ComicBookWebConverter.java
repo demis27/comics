@@ -15,6 +15,8 @@ public class ComicBookWebConverter {
         ComicBookWebDTO dto = new ComicBookWebDTO();
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());
+        dto.setIsbn(entity.getIsbn());
+        dto.setSummary(entity.getSummary());
 
         return dto;
     }
@@ -35,6 +37,8 @@ public class ComicBookWebConverter {
         ComicBookEntity entity = new ComicBookEntity();
         entity.setId(dto.getId());
         entity.setTitle(dto.getTitle());
+        entity.setIsbn(dto.getIsbn());
+        entity.setSummary(dto.getSummary());
 
         return entity;
     }

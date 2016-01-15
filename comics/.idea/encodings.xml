@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/comics-business" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-business/src/main/java/org/demis/comics/business/service/ActorBusinessService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-business/src/main/java/org/demis/comics/business/service/ComicBookBusinessService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/comics-data" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/SortParameterElement.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/SortParameterElementConverter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/converter/ActorConverter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/converter/ComicBookConverter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/converter/GenericConverter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/dto/AbstractDTO.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/dto/ActorDTO.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/dto/ComicBookDTO.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/dto/DTO.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/PersistenceJPAConfiguration.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/AbstractEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/ActorComicBookAssociationEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/ActorEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/ActorRole.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/ComicBookEntity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/EntityInterface.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/repository/ActorComicBookAssociationRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/repository/ActorRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/repository/ComicBookRepository.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/service/ActorComicBookAssociationJPAService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/service/ActorJPAService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/service/ComicBookJPAService.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/sql/create.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/main/sql/drop.sql" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/comics-data/src/test/java/org/demis/comics/data/jpa/service/ComicBookJPAServiceTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/comics-search" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/comics-web" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />

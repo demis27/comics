@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="comic_book")
@@ -13,6 +15,9 @@ public class ComicBookEntity extends AbstractEntity implements EntityInterface {
 
     private Long id;
     private String title;
+    private List<ActorComicBookAssociationEntity> actors;
+    private String isbn;
+    private String summary;
 
     @Id
     @Column (name="comic_book_id", precision = 10)
@@ -33,5 +38,46 @@ public class ComicBookEntity extends AbstractEntity implements EntityInterface {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Column (name="isbn", nullable = true, unique = false, length = 13)
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    @Lob
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    @OneToMany(mappedBy = "comicBook", fetch = FetchType.EAGER)
+    public List<ActorComicBookAssociationEntity> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<ActorComicBookAssociationEntity> actors) {
+        this.actors = actors;
+    }
+
+    public void addActor(ActorEntity actorEntity, ActorRole role) {
+        ActorComicBookAssociationEntity association = new ActorComicBookAssociationEntity();
+        association.setComicBook(this);
+        association.setActor(actorEntity);
+        association.setRole(role);
+
+        if (this.actors == null) {
+            actors = new ArrayList<>();
+        }
+
+        this.actors.add(association);
+        actorEntity.getComics().add(association);
     }
 }

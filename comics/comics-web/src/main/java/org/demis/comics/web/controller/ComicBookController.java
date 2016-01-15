@@ -2,7 +2,7 @@ package org.demis.comics.web.controller;
 
 import org.demis.comics.business.service.ComicBookBusinessService;
 import org.demis.comics.data.Range;
-import org.demis.comics.data.Sort;
+import org.demis.comics.data.SortParameterElement;
 import org.demis.comics.data.jpa.entity.ComicBookEntity;
 import org.demis.comics.web.converter.ComicBookWebConverter;
 import org.demis.comics.web.dto.ComicBookWebDTO;
@@ -18,9 +18,10 @@ import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
-@RequestMapping("/rest/")
+@RequestMapping("/comicBook")
 public class ComicBookController extends AbstractController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ComicBookController.class);
@@ -38,20 +39,26 @@ public class ComicBookController extends AbstractController {
     // ------------------------------------------------------------------------
 
     @RequestMapping(method = RequestMethod.GET,
-            value = {"comicBook", "comicBook/"},
             produces = {"application/json; charset=UTF-8"}
     )
     @ResponseBody
     public List<ComicBookWebDTO> getComicBooks(@RequestParam(value="sort", required = false) String sortParameters,
+                                               @RequestParam(value="search", required = false) String searchParameters,
                                                HttpServletRequest request,
-                                               HttpServletResponse response) throws RangeException {
+                                               HttpServletResponse response) throws RangeException, ExecutionException, InterruptedException {
         response.setHeader(HttpHeaders.ACCEPT_RANGES, "resources");
 
         List<ComicBookWebDTO> dtos = null;
         Range range = getRange(request.getHeader("Range"));
-        List<Sort> sorts = getSorts(sortParameters);
+        List<SortParameterElement> sorts = getSorts(sortParameters);
 
-        List<ComicBookEntity> entities = service.findPart(range, sorts);
+        List<ComicBookEntity> entities;
+        if (searchParameters != null && !searchParameters.isEmpty()) {
+            entities = service.searchEverywhere(searchParameters, range, sorts);
+        }
+        else {
+            entities = service.findPart(range, sorts);
+        }
         if (entities.isEmpty()) {
             response.setStatus(HttpStatus.NO_CONTENT.value());
         } else {
@@ -63,7 +70,7 @@ public class ComicBookController extends AbstractController {
     }
 
     @ResponseBody
-    @RequestMapping(value = {"comicBook/{id}","comicBook/{id}/"},
+    @RequestMapping(value = {"/{id}"},
             method = RequestMethod.GET,
             produces = {"application/json; charset=UTF-8"}
     )
@@ -84,12 +91,11 @@ public class ComicBookController extends AbstractController {
     // POST
     // ------------------------------------------------------------------------
 
-    @RequestMapping(value = {"comicBook", "comicBook/"},
-            consumes = {"application/json"},
+    @RequestMapping(consumes = {"application/json"},
             produces = {"application/json; charset=UTF-8"},
             method = RequestMethod.POST)
     @ResponseBody
-    public Object postComicBook(@RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) {
+    public Object postComicBook(@RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) throws ExecutionException, InterruptedException {
         ComicBookEntity entity = service.create(converter.convertWebDTO(dto));
         if (entity != null) {
             httpResponse.setStatus(HttpStatus.OK.value());
@@ -101,7 +107,7 @@ public class ComicBookController extends AbstractController {
         }
     }
 
-    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void postComicBooks() {
     }
@@ -110,17 +116,17 @@ public class ComicBookController extends AbstractController {
     // PUT
     // ------------------------------------------------------------------------
 
-    @RequestMapping(value = {"comicBook", "comicBook/"}, method = RequestMethod.PUT)
+    @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void putComicBooks() {
     }
 
-    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"},
+    @RequestMapping(value = {"/{id}"},
             consumes = {"application/json"},
             produces = {"application/json; charset=UTF-8"},
             method = RequestMethod.PUT)
     @ResponseBody
-    public Object putComicBook(@PathVariable("id") Long id, @RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) {
+    public Object putComicBook(@PathVariable("id") Long id, @RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) throws ExecutionException, InterruptedException {
         ComicBookEntity entity = service.findById(id);
         if (entity != null) {
             converter.updateEntity(entity, dto);
@@ -143,12 +149,12 @@ public class ComicBookController extends AbstractController {
     // DELETE
     // ------------------------------------------------------------------------
 
-    @RequestMapping(value = {"comicBook", "comicBook/"}, method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void deleteComicBooks() {
     }
 
-    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.DELETE)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.DELETE)
     @ResponseBody
     public Object deleteComicBook(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
         ComicBookEntity entity = service.findById(id);
@@ -170,13 +176,13 @@ public class ComicBookController extends AbstractController {
     // OPTIONS
     // ------------------------------------------------------------------------
 
-    @RequestMapping(value = {"comicBook", "comicBook/"}, method = RequestMethod.OPTIONS)
+    @RequestMapping(method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     public void optionsComicBooks(HttpServletResponse httpResponse){
         httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,OPTIONS,POST");
     }
 
-    @RequestMapping(value = {"comicBook/{id}", "comicBook/{id}/"}, method = RequestMethod.OPTIONS)
+    @RequestMapping(value = {"/{id}"}, method = RequestMethod.OPTIONS)
     @ResponseStatus(HttpStatus.OK)
     public void optionsComicBook(HttpServletResponse httpResponse){
         httpResponse.addHeader(HttpHeaders.ALLOW, "HEAD,GET,PUT,DELETE,OPTIONS");

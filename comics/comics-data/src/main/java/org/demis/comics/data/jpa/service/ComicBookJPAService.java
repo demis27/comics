@@ -1,8 +1,8 @@
 package org.demis.comics.data.jpa.service;
 
 import org.demis.comics.data.Range;
-import org.demis.comics.data.Sort;
-import org.demis.comics.data.SortConverter;
+import org.demis.comics.data.SortParameterElement;
+import org.demis.comics.data.SortParameterElementConverter;
 import org.demis.comics.data.jpa.entity.ComicBookEntity;
 import org.demis.comics.data.jpa.repository.ComicBookRepository;
 import org.slf4j.Logger;
@@ -28,6 +28,7 @@ public class ComicBookJPAService {
         return comicBookRepository.save(created);
     }
 
+    @Transactional
     public ComicBookEntity delete(Long id) throws EntityNotFoundException {
         ComicBookEntity deleted = comicBookRepository.findOne(id);
 
@@ -62,7 +63,8 @@ public class ComicBookJPAService {
         return founded;
     }
 
-    public List<ComicBookEntity> findPart(Range range, List<Sort> sorts) {
-        return comicBookRepository.findAll(new PageRequest(range.getPage(), range.getSize(), SortConverter.convert(sorts))).getContent();
+    @Transactional(readOnly = true)
+    public List<ComicBookEntity> findPart(Range range, List<SortParameterElement> sorts) {
+        return comicBookRepository.findAll(new PageRequest(range.getPage(), range.getSize(), SortParameterElementConverter.convert(sorts))).getContent();
     }
 }

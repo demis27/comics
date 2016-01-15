@@ -2,10 +2,10 @@ package org.demis.comics.web.controller;
 
 import org.demis.comics.data.Range;
 import org.demis.comics.data.RequestedRangeUnsatisfiableException;
-import org.demis.comics.data.Sort;
+import org.demis.comics.data.SortParameterElement;
 import org.demis.comics.web.RangeConverter;
 import org.demis.comics.web.RestConfiguration;
-import org.demis.comics.web.SortConverter;
+import org.demis.comics.web.SortParameterParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +41,10 @@ public class AbstractController {
         return range;
     }
 
-    protected List<Sort> getSorts(String sortParameters) {
-        List<Sort> sorts;
+    protected List<SortParameterElement> getSorts(String sortParameters) {
+        List<SortParameterElement> sorts;
         if (sortParameters != null && sortParameters.length() > 0) {
-            sorts = SortConverter.parse(sortParameters);
+            sorts = SortParameterParser.parse(sortParameters);
         }
         else {
             sorts = Collections.emptyList();
