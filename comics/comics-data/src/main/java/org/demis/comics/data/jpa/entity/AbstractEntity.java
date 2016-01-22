@@ -12,21 +12,21 @@ public class AbstractEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modification_date", nullable = false, updatable = true)
     public Date getUpdated() {
-        return updated;
+        return new Date(updated.getTime());
     }
 
     public void setUpdated(Date updated) {
-        this.updated = updated;
+        this.updated = new Date(updated.getTime());
     }
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "creation_date", nullable = false, updatable = false)
     public Date getCreated() {
-        return created;
+        return new Date(created.getTime());
     }
 
     public void setCreated(Date created) {
-        this.created = created;
+        this.created = new Date(created.getTime());
     }
 
     @PrePersist

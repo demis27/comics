@@ -10,6 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.hateoas.Resource;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +42,8 @@ public class ComicBookController extends AbstractController {
     // ------------------------------------------------------------------------
 
     @RequestMapping(method = RequestMethod.GET,
-            produces = {"application/json; charset=UTF-8"}
+            produces = {"application/json; charset=UTF-8"},
+            consumes = "application/json"
     )
     @ResponseBody
     public List<ComicBookWebDTO> getComicBooks(@RequestParam(value="sort", required = false) String sortParameters,
@@ -72,7 +76,29 @@ public class ComicBookController extends AbstractController {
     @ResponseBody
     @RequestMapping(value = {"/{id}"},
             method = RequestMethod.GET,
-            produces = {"application/json; charset=UTF-8"}
+            produces = {"application/json; charset=UTF-8"},
+            consumes = "application/hal+json"
+    )
+    public HttpEntity<Resource> getComicBookHal(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
+        ComicBookEntity IncomingEmail = service.findById(id);
+        if (IncomingEmail != null) {
+            httpResponse.setStatus(HttpStatus.OK.value());
+            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, IncomingEmail.getUpdated().getTime());
+            ComicBookWebDTO dto = converter.convertEntity(IncomingEmail);
+            Resource resource = new Resource(dto, ControllerLinkBuilder.linkTo(ComicBookController.class).slash(dto.getId()).withSelfRel());
+
+            return new HttpEntity<>(resource);
+        } else {
+            httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
+            return null;
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping(value = {"/{id}"},
+            method = RequestMethod.GET,
+            produces = {"application/json; charset=UTF-8"},
+            consumes = "application/json"
     )
     public Object getComicBook(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
         ComicBookEntity IncomingEmail = service.findById(id);
@@ -98,7 +124,7 @@ public class ComicBookController extends AbstractController {
     public Object postComicBook(@RequestBody ComicBookWebDTO dto, HttpServletResponse httpResponse) throws ExecutionException, InterruptedException {
         ComicBookEntity entity = service.create(converter.convertWebDTO(dto));
         if (entity != null) {
-            httpResponse.setStatus(HttpStatus.OK.value());
+            httpResponse.setStatus(HttpStatus.CREATED.value());
             httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, entity.getUpdated().getTime());
             return converter.convertEntity(entity);
         } else {

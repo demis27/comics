@@ -1,0 +1,40 @@
+﻿create sequence "comics-test".comic_book_sequence;
+create table "comics-test".comic_book (
+    comic_book_id               integer default nextval ('"comics-test".comic_book_sequence') not null,
+    creation_date               timestamp without time zone default current_date not null,
+    modification_date           timestamp without time zone default current_date not null,
+    title                       character varying(256) not null,
+    summary                     text,
+    isbn                        character varying(13),
+    constraint comic_book_pk primary key (comic_book_id)
+);
+
+
+
+create sequence "comics-test".actor_sequence;
+create table "comics-test".actor (
+    actor_id                    integer default nextval ('"comics-test".actor_sequence') not null,
+    creation_date               timestamp without time zone default current_date not null,
+    modification_date           timestamp without time zone default current_date not null,
+    cover_name                  character varying(256) not null,
+    constraint actor_pk primary key (actor_id)
+);
+
+create sequence "comics-test".comic_actor_relation_sequence;
+create table "comics-test".comic_actor_relation (
+    comic_actor_relation_id     integer default nextval ('"comics-test".comic_actor_relation_sequence') not null,
+    comic_book_id               integer not null,
+    actor_id                    integer not null,
+    role                        character varying(1),
+    creation_date               timestamp without time zone default current_date not null,
+    modification_date           timestamp without time zone default current_date not null,
+    constraint actor_book_sequence_pk primary key (comic_actor_relation_id),
+    constraint actor_book_role_book_fk foreign key (comic_book_id)
+        references "comics-test".comic_book (comic_book_id),
+    constraint actor_book_role_actor_fk foreign key (actor_id)
+        references "comics-test".actor (actor_id)
+);
+
+
+
+

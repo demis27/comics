@@ -9,3 +9,4 @@ ToDo
     * Add a new entity with a 1-n relation with comicBook
     * Add a HAL or Siren content type result
     * Spring HateOAS
+    * controller return ResponseEntity

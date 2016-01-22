@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Id</th><th>Title</th><th>ISBN</th><th>Summary</th>
+    </tr>
+    <tr *ngFor="#comicBook of comicBooks">
+        <td>{{ comicBook.id }}</td><td>{{ comicBook.title }}</td><td>{{ comicBook.isbn }}</td><td>{{ comicBook.summary }}</td>
+    </tr>
+</table>
+
+<form (ngSubmit)="addComicBook()">
+    <label>Title:</label>
+    <input type="text" [(ngModel)]="book.title" required>
+    <input type="text" [(ngModel)]="book.isbn" required>
+
+    <button type="submit">Add</button>
+</form>
