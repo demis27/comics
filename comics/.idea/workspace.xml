@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d12aaac-032c-4cbb-bad0-0c242fef1e90" name="Default" comment="Second version">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/comics.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_hateoas_spring_hateoas_0_19_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-data/src/main/sql/create-test.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-web/src/main/webapp/src/boot.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-web/src/main/webapp/src/comicBook.service.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-web/src/main/webapp/src/comicBook.template.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-web/src/main/webapp/src/comicBook.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-web/src/test/java/org/demis/comics/web/controller/ComicBookControllerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/comics-web/src/test/resources/comics.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/AbstractEntity.java" afterPath="$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/AbstractEntity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/ActorRole.java" afterPath="$PROJECT_DIR$/comics-data/src/main/java/org/demis/comics/data/jpa/entity/ActorRole.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-search/src/test/resources/comics.properties" afterPath="$PROJECT_DIR$/comics-search/src/test/resources/comics.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-web/comics-web.iml" afterPath="$PROJECT_DIR$/comics-web/comics-web.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-web/pom.xml" afterPath="$PROJECT_DIR$/comics-web/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-web/src/main/java/org/demis/comics/web/controller/ComicBookController.java" afterPath="$PROJECT_DIR$/comics-web/src/main/java/org/demis/comics/web/controller/ComicBookController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-web/src/main/webapp/index.html" afterPath="$PROJECT_DIR$/comics-web/src/main/webapp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/comics-web/src/site/apt/index.apt" afterPath="$PROJECT_DIR$/comics-web/src/site/apt/index.apt" />
     </list>
     <ignored path="comics-parent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -593,7 +569,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453502210846</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Second version">
+      <created>1453502290360</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1453502290360</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -636,9 +618,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Second version" />
     <MESSAGE value="Ad an very simple Angular2 sample" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ad an very simple Angular2 sample" />
+    <MESSAGE value="Second version" />
+    <option name="LAST_COMMIT_MESSAGE" value="Second version" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -853,6 +835,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -867,6 +850,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -874,6 +858,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
