@@ -67,11 +67,11 @@ public class ActorController extends AbstractController {
             produces = {"application/json; charset=UTF-8"}
     )
     public Object getActor(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
-        ActorEntity IncomingEmail = service.findById(id);
-        if (IncomingEmail != null) {
+        ActorEntity incomingEmail = service.findById(id);
+        if (incomingEmail != null) {
             httpResponse.setStatus(HttpStatus.OK.value());
-            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, IncomingEmail.getUpdated().getTime());
-            return converter.convertEntity(IncomingEmail);
+            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, incomingEmail.getUpdated().getTime());
+            return converter.convertEntity(incomingEmail);
         } else {
             httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
             return null;
@@ -102,6 +102,7 @@ public class ActorController extends AbstractController {
     @RequestMapping(value = {"/{id}"}, method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void postActors() {
+        LOGGER.info("Try to call POST HTTP method on a resource collection");
     }
 
     // ------------------------------------------------------------------------
@@ -111,6 +112,7 @@ public class ActorController extends AbstractController {
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void putActors() {
+        LOGGER.info("Try to call PUT HTTP method on a resource");
     }
 
     @RequestMapping(value = {"/{id}"},
@@ -144,6 +146,7 @@ public class ActorController extends AbstractController {
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void deleteActors() {
+        LOGGER.info("Try to call DELETE HTTP method on a resource collection");
     }
 
     @RequestMapping(value = {"/{id}"}, method = RequestMethod.DELETE)

@@ -80,11 +80,11 @@ public class ComicBookController extends AbstractController {
             consumes = "application/hal+json"
     )
     public HttpEntity<Resource> getComicBookHal(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
-        ComicBookEntity IncomingEmail = service.findById(id);
-        if (IncomingEmail != null) {
+        ComicBookEntity incomingEmail = service.findById(id);
+        if (incomingEmail != null) {
             httpResponse.setStatus(HttpStatus.OK.value());
-            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, IncomingEmail.getUpdated().getTime());
-            ComicBookWebDTO dto = converter.convertEntity(IncomingEmail);
+            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, incomingEmail.getUpdated().getTime());
+            ComicBookWebDTO dto = converter.convertEntity(incomingEmail);
             Resource resource = new Resource(dto, ControllerLinkBuilder.linkTo(ComicBookController.class).slash(dto.getId()).withSelfRel());
 
             return new HttpEntity<>(resource);
@@ -101,11 +101,11 @@ public class ComicBookController extends AbstractController {
             consumes = "application/json"
     )
     public Object getComicBook(@PathVariable(value = "id") Long id, HttpServletResponse httpResponse) {
-        ComicBookEntity IncomingEmail = service.findById(id);
-        if (IncomingEmail != null) {
+        ComicBookEntity incomingEmail = service.findById(id);
+        if (incomingEmail != null) {
             httpResponse.setStatus(HttpStatus.OK.value());
-            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, IncomingEmail.getUpdated().getTime());
-            return converter.convertEntity(IncomingEmail);
+            httpResponse.setDateHeader(HttpHeaders.LAST_MODIFIED, incomingEmail.getUpdated().getTime());
+            return converter.convertEntity(incomingEmail);
         } else {
             httpResponse.setStatus(HttpStatus.NOT_FOUND.value());
             return null;
@@ -136,6 +136,7 @@ public class ComicBookController extends AbstractController {
     @RequestMapping(value = {"/{id}"}, method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void postComicBooks() {
+        LOGGER.info("Try to call POST HTTP method on a resource collection");
     }
 
     // ------------------------------------------------------------------------
@@ -145,6 +146,7 @@ public class ComicBookController extends AbstractController {
     @RequestMapping(method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void putComicBooks() {
+        LOGGER.info("Try to call PUT HTTP method on a resource");
     }
 
     @RequestMapping(value = {"/{id}"},
@@ -178,6 +180,7 @@ public class ComicBookController extends AbstractController {
     @RequestMapping(method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
     public void deleteComicBooks() {
+        LOGGER.info("Try to call DELETE HTTP method on a resource collection");
     }
 
     @RequestMapping(value = {"/{id}"}, method = RequestMethod.DELETE)

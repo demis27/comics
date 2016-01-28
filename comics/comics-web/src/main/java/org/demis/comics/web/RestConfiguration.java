@@ -27,6 +27,13 @@ import java.util.List;
 @Component
 public class RestConfiguration extends WebMvcConfigurationSupport {
 
+    public RestConfiguration() {
+        super();
+        List<HandlerExceptionResolver> resolvers = new ArrayList<>();
+        resolvers.add(new HandlerException400Resolver());
+        configureHandlerExceptionResolvers(resolvers);
+    }
+
     public static final int DEFAULT_PAGE_SIZE = 20;
 
     @Autowired
@@ -42,11 +49,5 @@ public class RestConfiguration extends WebMvcConfigurationSupport {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);
     }
 
-    public RestConfiguration() {
-        super();
-        List<HandlerExceptionResolver> resolvers = new ArrayList<>();
-        resolvers.add(new HandlerException400Resolver());
-        configureHandlerExceptionResolvers(resolvers);
-    }
 }
 

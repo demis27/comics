@@ -6,9 +6,6 @@ public class ComicBookDTO extends AbstractDTO implements DTO {
     private String isbn;
     private String summary;
 
-    public ComicBookDTO() {
-    }
-
     public String getTitle() {
         return title;
     }

@@ -2,7 +2,7 @@ package org.demis.comics.web.exception;
 
 public class RestError {
 
-    private String message;
+    private final String message;
 
     public RestError(String message) {
         this.message = message;
@@ -10,9 +10,5 @@ public class RestError {
 
     public String getMessage() {
         return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 }

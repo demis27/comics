@@ -1,0 +1,8 @@
+<table>
+    <tr>
+        <th>Id</th><th>Title</th><th>ISBN</th><th>Summary</th>
+    </tr>
+    <tr *ngFor="#comicBook of comicBooks" [class.selected]="comicBook === selectedBook" (click)="onSelect(comicBook);gotoDetail()">
+        <td>{{ comicBook.id }}</td><td>{{ comicBook.title }}</td><td>{{ comicBook.isbn }}</td><td>{{ comicBook.summary }}</td>
+    </tr>
+</table>

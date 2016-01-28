@@ -1,5 +1,6 @@
 <html>
     <head>
+        <base href="/comics-web-1.0-SNAPSHOT/">
         <title>Comics</title>
 
         <script src="https://rawgithub.com/systemjs/systemjs/0.19.6/dist/system.js"></script>
@@ -8,14 +9,15 @@
         <script src="https://code.angularjs.org/2.0.0-beta.0/Rx.js"></script>
         <script src="https://code.angularjs.org/2.0.0-beta.0/angular2.dev.js"></script>
         <script src="https://code.angularjs.org/2.0.0-beta.0/http.dev.js"></script>
+        <script src="https://code.angularjs.org/2.0.0-beta.0/router.dev.js"></script>
 
         <script>
           System.config({
             transpiler: 'typescript',
             typescriptOptions: { emitDecoratorMetadata: true },
-            packages: {'src': {defaultExtension: 'ts'}}
+            packages: {'src2': {defaultExtension: 'ts'}}
           });
-          System.import('src/boot')
+          System.import('src2/boot')
                 .then(null, console.error.bind(console));
         </script>
     </head>

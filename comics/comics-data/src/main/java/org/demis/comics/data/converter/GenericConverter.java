@@ -2,8 +2,6 @@ package org.demis.comics.data.converter;
 
 import org.demis.comics.data.dto.DTO;
 import org.demis.comics.data.jpa.entity.EntityInterface;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +9,6 @@ import java.util.stream.Collectors;
 
 
 public abstract class GenericConverter<EntityImpl extends EntityInterface, DTOImpl extends DTO> {
-
-    private static final Logger logger = LoggerFactory.getLogger(GenericConverter.class);
 
     protected final Class<EntityImpl> entityClass;
 
