@@ -6,7 +6,11 @@ import org.demis.comics.data.RequestedRangeUnsatisfiableException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RangeConverter {
+public final class RangeConverter {
+
+    private RangeConverter() {
+
+    }
 
     private static final Pattern pattern = Pattern.compile("resources[ ]*:[ ]*page[ ]*=[ ]*([0-9]*)[ ]*;[ ]*size[ ]*=[ ]*([0-9]*)");
 

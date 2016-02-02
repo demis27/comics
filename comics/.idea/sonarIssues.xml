@@ -33,6 +33,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/comics-data/src/test/resources/comics.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/comics-search/src/test/resources/comics.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/comics-web/src/main/java/org/demis/comics/web/RestConfiguration.java">
           <value>
             <set />
@@ -49,6 +59,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/comics-web/src/main/java/org/demis/comics/web/exception/RestError.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/comics-web/src/main/resources/comics.properties">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/comics-web/src/test/resources/comics.properties">
           <value>
             <set />
           </value>

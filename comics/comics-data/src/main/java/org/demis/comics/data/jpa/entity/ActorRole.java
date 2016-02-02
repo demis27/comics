@@ -5,7 +5,7 @@ public enum ActorRole {
     W ("W"), // Writer
     A ("A"); // Artist
 
-    private String code;
+    private final String code;
 
     ActorRole(String code) {
         this.code = code;

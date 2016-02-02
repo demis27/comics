@@ -1,14 +1,25 @@
 <div *ngIf="comicBook">
-    <h2>{{comicBook.title}} details!</h2>
-    <div>
-        <label>id: </label>{{comicBook.id}}</div>
-    <div>
-        <label>title: </label>
-        <input [(ngModel)]="comicBook.title" placeholder="title"/>
-    </div>
-    <div>
-        <label>ISBN: </label>
-        <input [(ngModel)]="comicBook.isbn" placeholder="isbn"/>
-    </div>
-    <button (click)="goBack()">Back</button>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<label class="mdl-textfield__label" for="id" id="idLabel">id: </label>
+		<input class="mdl-textfield__input" type="text" id="id" [(ngModel)]="comicBook.id"/>
+	</div>
+	<br/>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<label class="mdl-textfield__label" for="title">title: </label>
+		<input class="mdl-textfield__input" type="text" id="title" [(ngModel)]="comicBook.title"/>
+	</div>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<label class="mdl-textfield__label" for="isbn">ISBN: </label>
+		<input class="mdl-textfield__input" type="text" id="isbn" [(ngModel)]="comicBook.isbn"/>
+	</div>
+	<br/>
+	<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+		<textarea class="mdl-textfield__input" type="text" rows= "5" id="summary" [(ngModel)]="comicBook.summary"></textarea>
+		<label class="mdl-textfield__label" for="summary">Summary</label>
+	</div>
+	<br/>
+    <button class="ske-button" (click)="goBack()">Back</button>
+	<script>
+        componentHandler.upgradeElement($("#idLabel"));
+	</script>
 </div>

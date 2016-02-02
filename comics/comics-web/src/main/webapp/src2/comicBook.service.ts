@@ -5,7 +5,7 @@ import 'rxjs/Rx'
 @Injectable()
 export class ComicBookService{
 
-    endpoint_url:String = "http://localhost:9090/comics-web-1.0-SNAPSHOT/api/rest/comicBook";
+    endpoint_url:String = "http://localhost:8080/comics-web-1.0-SNAPSHOT/api/rest/comicBook";
 
     constructor(http: Http){
         this.http = http;

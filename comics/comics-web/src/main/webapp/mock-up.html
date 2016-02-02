@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Comics</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="./mdl/material.min.css">
+		<script src="./mdl/material.min.js"></script>
+    </head>
+    <body>
+		<div style="margin:10px">
+		<a class="mdl-button mdl-js-button mdl-button--raised" href="toto">Comic Books</a>
+		<br/>
+	
+		<br/>
+		<table class="mdl-data-table mdl-js-data-table">
+			<tr>
+				<th>Id</th><th class="mdl-data-table__cell--non-numeric">Title</th><th class="mdl-data-table__cell--non-numeric">ISBN</th><th class="mdl-data-table__cell--non-numeric">Summary</th>
+			</tr>
+			<tr>
+				<td>1</td><td class="mdl-data-table__cell--non-numeric">Adèle et la Bête</td><td class="mdl-data-table__cell--non-numeric">978-2-203-30501-4</td><td class="mdl-data-table__cell--non-numeric">Paris, le 4 novembre 1911. Au muséum d'histoire naturelle du jardin des Plantes...</td>
+			</tr>
+			<tr>
+				<td>2</td><td class="mdl-data-table__cell--non-numeric">Le Démon de la Tour Eiffel</td><td class="mdl-data-table__cell--non-numeric">978-2-203-30502-9</td><td class="mdl-data-table__cell--non-numeric"></td>
+			</tr>
+			<tr>
+				<td>3</td><td class="mdl-data-table__cell--non-numeric">Le Savant fou</td><td class="mdl-data-table__cell--non-numeric">978-2-203-00949-7</td><td class="mdl-data-table__cell--non-numeric"></td>
+			</tr>
+		</table>	
+		<br/>
+	
+		<div>
+			<div class="mdl-textfield mdl-js-textfield">
+				<label class="mdl-textfield__label" for="id">id: </label>
+				<input class="mdl-textfield__input" type="text" id="id" value="1"/>
+			</div>
+			<br/>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<label class="mdl-textfield__label" for="title">title: </label>
+				<input class="mdl-textfield__input" type="text" id="title" value="Adèle et la Bête"/>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<label class="mdl-textfield__label" for="isbn">ISBN: </label>
+				<input class="mdl-textfield__input" type="text" id="isbn" value="978-2-203-30501-4"/>
+			</div>
+			<br/>
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+				<textarea class="mdl-textfield__input" type="text" rows= "5" id="summary" >Paris, le 4 novembre 1911. Au muséum d'histoire naturelle du jardin des Plantes, un œuf préhistorique éclot pour libérer un ptérodactyle qui finit par s'élancer dans le ciel de la capitale. Il va s'ensuivre une série d'agressions particulièrement violentes qui finissent par alarmer les esprits. Au même instant, à Lyon, Philippe Boutardieu, auparavant joyeux, est désespéré. Il paraît très inquiet. Les personnes qui voient le monstre meurent les unes après les autres. Le 16 novembre de la même année, Antoine Zborowsky est dans le train vers Paris. Il aborde une jeune femme qui dit s'appeler Edith Rabatjoie. Cette femme n'est autre qu'Adèle Blanc-Sec, qui sillonne la région discrètement pour écrire des romans. Adèle apprend que le gouvernement offre une prime pour la capture du ptérodactyle. Elle compte bien chasser le monstre et toucher la récompense. Son amant, Lucien Ripol, un cambrioleur recherché, perdra la vie dans l'aventure. Adèle va enquêter. Elle est persuadée qu'un lien existe entre la mort de son amant et le ptérodactyle ressuscité.</textarea>
+				<label class="mdl-textfield__label" for="summary">Summary</label>
+			</div>
+			<br/>
+			<button class="mdl-button mdl-js-button mdl-button--raised" href="toto">Back</button>
+		</div>
+		</div>
+    </body>
+</html>

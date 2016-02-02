@@ -3,7 +3,7 @@ package org.demis.comics.data;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SortConverter {
+public final class SortConverter {
 
     private SortConverter() {
     }

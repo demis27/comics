@@ -1,8 +1,8 @@
-<table>
-    <tr>
-        <th>Id</th><th>Title</th><th>ISBN</th><th>Summary</th>
-    </tr>
-    <tr *ngFor="#comicBook of comicBooks" [class.selected]="comicBook === selectedBook" (click)="onSelect(comicBook);gotoDetail()">
-        <td>{{ comicBook.id }}</td><td>{{ comicBook.title }}</td><td>{{ comicBook.isbn }}</td><td>{{ comicBook.summary }}</td>
-    </tr>
+<table class="mdl-data-table mdl-js-data-table">
+	<tr>
+		<th>Id</th><th class="mdl-data-table__cell--non-numeric">Title</th><th class="mdl-data-table__cell--non-numeric">ISBN</th><th class="mdl-data-table__cell--non-numeric">Summary</th>
+	</tr>
+	<tr *ngFor="#comicBook of comicBooks" [class.selected]="comicBook === selectedBook" (click)="onSelect(comicBook);gotoDetail()">
+		<td>{{ comicBook.id }}</td><td class="mdl-data-table__cell--non-numeric">{{ comicBook.title }}</td><td class="mdl-data-table__cell--non-numeric">{{ comicBook.isbn }}</td><td class="mdl-data-table__cell--non-numeric">{{ comicBook.summary }}</td>
+	</tr>
 </table>

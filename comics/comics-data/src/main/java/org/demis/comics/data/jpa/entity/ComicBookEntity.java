@@ -40,7 +40,7 @@ public class ComicBookEntity extends AbstractEntity implements EntityInterface {
         this.title = title;
     }
 
-    @Column (name="isbn", nullable = true, unique = false, length = 13)
+    @Column (name="isbn", nullable = true, unique = false, length = 17)
     public String getIsbn() {
         return isbn;
     }

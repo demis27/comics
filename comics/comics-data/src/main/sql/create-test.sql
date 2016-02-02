@@ -1,12 +1,24 @@
-﻿create sequence "comics-test".comic_book_sequence;
+﻿create sequence "comics-test".comic_book_series_sequence;
+create table "comics-test".comic_book_series (
+    comic_book_series_id        integer default nextval ('"comics-test".comic_book_series_sequence') not null,
+    creation_date               timestamp without time zone default current_date not null,
+    modification_date           timestamp without time zone default current_date not null,
+    title                       character varying(256) not null,
+    constraint comic_book_series_pk primary key (comic_book_series_id)
+);
+
+create sequence "comics-test".comic_book_sequence;
 create table "comics-test".comic_book (
     comic_book_id               integer default nextval ('"comics-test".comic_book_sequence') not null,
     creation_date               timestamp without time zone default current_date not null,
     modification_date           timestamp without time zone default current_date not null,
     title                       character varying(256) not null,
     summary                     text,
-    isbn                        character varying(13),
-    constraint comic_book_pk primary key (comic_book_id)
+    isbn                        character varying(17),
+    comic_book_series_id        integer null,
+    constraint comic_book_pk primary key (comic_book_id),
+    constraint comic_book_series_fk foreign key (comic_book_series_id)
+        references "comics-test".comic_book_series (comic_book_series_id)
 );
 
 

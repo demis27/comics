@@ -7,9 +7,10 @@ import {ComicBookService} from './comicBook.service'
 @Component({
   selector: 'comics-app',
   template: `<nav>
-                <a [routerLink]="['ComicBook']">Comic Books</a>
+                <a class="ske-button" [routerLink]="['ComicBook']">Comic Books</a>
              </nav>
-             <router-outlet></router-outlet>`,
+             <router-outlet></router-outlet>
+			 <br/>`,
   directives: [ROUTER_DIRECTIVES],
   providers: [ComicBookService]
 })
